@@ -2,6 +2,7 @@ const Traveller = function(journeys) {
   this.journeys = journeys;
 };
 
+
 Traveller.prototype.getJourneyStartLocations = function() {
   let startLocations = [];
   this.journeys.map(journey => {
@@ -10,6 +11,7 @@ Traveller.prototype.getJourneyStartLocations = function() {
   return startLocations;
 };
 
+
 Traveller.prototype.getJourneyEndLocations = function () {
   let endLocations = [];
   this.journeys.map(journey => {
@@ -17,6 +19,7 @@ Traveller.prototype.getJourneyEndLocations = function () {
   });
   return endLocations;
 };
+
 
 Traveller.prototype.getJourneysByTransport = function (transport) {
   let journeysByTransport = [];
@@ -28,6 +31,7 @@ Traveller.prototype.getJourneysByTransport = function (transport) {
   return journeysByTransport;
 };
 
+
 Traveller.prototype.getJourneysByMinDistance = function (minDistance) {
   journeyList = [];
   this.journeys.filter(journey => {
@@ -38,6 +42,7 @@ Traveller.prototype.getJourneysByMinDistance = function (minDistance) {
   return journeyList;
 };
 
+
 Traveller.prototype.calculateTotalDistanceTravelled = function () {
   return this.journeys.reduce( (totalDistance, journey ) =>{
     return totalDistance + journey.distance;
@@ -45,6 +50,9 @@ Traveller.prototype.calculateTotalDistanceTravelled = function () {
 };
 
 Traveller.prototype.getUniqueModesOfTransport = function () {
+  
+  // Citation (unique function)
+  // https://stackoverflow.com/questions/1960473/get-all-unique-values-in-a-javascript-array-remove-duplicates
   const unique = (value, index, self) => {
     return self.indexOf(value) === index
   }
@@ -57,6 +65,7 @@ Traveller.prototype.getUniqueModesOfTransport = function () {
   const uniqueTransports = transportTypesList.filter(unique);
   return uniqueTransports;
 };
+
 
 Traveller.prototype.calculateTotalDistanceTravelled = function(){
   return this.journeys.reduce( (totalDistance, journey ) =>{
